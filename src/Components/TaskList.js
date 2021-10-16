@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import { Link } from "react-router-dom";
 
 import { GlobalContext } from "../context/GlobalContext";
+import Card from './Card';
 
 const TaskList = () => {
   const {tasks, deleteTask, togleTaskDone} = useContext(GlobalContext)
@@ -32,6 +33,12 @@ const TaskList = () => {
             </div>
           </div>
         ))}
+        {
+          tasks.map(task => (
+            <Card task={task}/>
+          ))
+        }
+        {/* <Card/> */}
       </div>
 
     </div>
