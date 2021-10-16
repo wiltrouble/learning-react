@@ -10,7 +10,7 @@ const TaskList = () => {
   return (
     <div className="flex justify-center">
       {/* <button onClick={() => deleteTask()}>Delete all</button> */}
-      <div className="grid grid-cols-3">
+      <div className="grid grid-cols-4">
         {tasks && tasks.map(task => (
           <div className="bg-gray-900 px-20 py-5 text-white, shadow-2x1 mb-4 flex justify-between mx-2"
             key={task.id}>
