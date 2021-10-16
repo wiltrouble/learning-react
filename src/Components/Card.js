@@ -6,7 +6,7 @@ import { FiEdit2 } from "react-icons/fi";
 
 const Card = ({task}) => {
   return (
-    <div className="bg-gray-900 rounded-lg flex flex-row mb-4">
+    <div className="bg-gray-900 rounded-lg flex flex-row mb-4 mx-2">
       <div className="flex flex-col items-center justify-center space-around m-2 bg-red-900">
         <div className="bg-red-100 rounded-full h-20 w-20 flex items-center justify-center">
           <AiFillHeart size="40" color="black"/>
