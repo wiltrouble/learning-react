@@ -36,8 +36,6 @@ export const ContextProvider = ({children}) => {
 
   const togleTaskDone = id => dispatch({type: 'TOGLE_TASK_DONE', payload: id})
 
-  const profile = (task) => dispatch({type: 'PROFILE', payload: task})
-
   return (
     <GlobalContext.Provider value={{...state, addTask, deleteTask, updateTask, togleTaskDone}}>
       {children}

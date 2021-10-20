@@ -1,11 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { useHistory, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import { GlobalContext } from "../context/GlobalContext";
 
 const Profile = () => {
   const {tasks} = useContext(GlobalContext)
-  const history = useHistory()
   const params = useParams()
 
   const [task, setTask] = useState({
@@ -24,7 +23,7 @@ const Profile = () => {
   return (
     <div>
       
-      {/* {console.log(task.title)} */}
+      {task.title}
     </div>
   )
 }

@@ -5,7 +5,7 @@ import { AiFillDelete } from "react-icons/ai";
 import { Link } from 'react-router-dom';
 
 
-const Card = ({task, deleteTask, togleTaskDone, profile}) => {
+const Card = ({task, deleteTask, togleTaskDone}) => {
   return (
     <div className="bg-gray-900 rounded-lg flex flex-row mb-4 mx-2">
       <div className="flex flex-col items-center justify-center space-around m-2 bg-red-900">
