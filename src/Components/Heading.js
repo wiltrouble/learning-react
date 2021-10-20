@@ -5,7 +5,7 @@ import { IoIosAdd } from "react-icons/io";
 const Heading = () => {
   return (
     <div>
-      <div className="flex items-center mb-10 bg-gray-900">
+      <div className="flex items-center mb-10">
         <Link to="/">
           <h5 className="text-gray-100 font-bold text-2x1">Task App</h5>
         </Link>

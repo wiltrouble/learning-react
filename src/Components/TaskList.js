@@ -9,7 +9,7 @@ const TaskList = () => {
   return (
     <div className="flex justify-center">
       {/* <button onClick={() => deleteTask()}>Delete all</button> */}
-      <div className="grid grid-cols-4">
+      <div className="grid grid-cols-3">
         {
           tasks.map(task => (
             <Card
