@@ -18,7 +18,7 @@ const Card = ({task, deleteTask, togleTaskDone}) => {
               src='https://images.unsplash.com/photo-1530268729831-4b0b9e170218?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80'/>        
         </Link>
       </div>
-      <div className="flex-grow w-70 px-10 flex flex-col justify-around">
+      <div className="flex-grow w-70 px-3 flex flex-col justify-around items-start">
         <div>{`${task.firstName} ${task.lastName}`}</div>
         <div>{task.birthDate}</div>
         <div>{task.area}</div>

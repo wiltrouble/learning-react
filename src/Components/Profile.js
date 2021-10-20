@@ -22,7 +22,6 @@ const Profile = () => {
   }, [params.id, tasks])
   return (
     <div>
-      
       {task.title}
     </div>
   )
