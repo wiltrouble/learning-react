@@ -1,11 +1,11 @@
 import { Switch, Route  } from "react-router-dom";
 import { ContextProvider } from "./context/GlobalContext";
 
-
+import './App.css';
 import Heading from "./Components/Heading";
 import TaskList from "./Components/TaskList";
 import TaskForm from "./Components/TaskForm";
-import './App.css';
+import Profile from "./Components/Profile";
 
 
 function App() {
@@ -26,6 +26,9 @@ function App() {
               <Route 
                 path="/edit/:id"
                 component={TaskForm}/>
+              <Route
+                path="/profile/:id"
+                component={Profile} />  
             </Switch>            
           </ContextProvider>
         </div>

@@ -1,5 +1,4 @@
 import React, { useContext } from 'react'
-import { Link } from "react-router-dom";
 
 import { GlobalContext } from "../context/GlobalContext";
 import Card from './Card';
@@ -13,7 +12,11 @@ const TaskList = () => {
       <div className="grid grid-cols-4">
         {
           tasks.map(task => (
-            <Card task={task} deleteTask={deleteTask} togleTaskDone={togleTaskDone}/>
+            <Card
+              key={task.id} 
+              task={task} 
+              deleteTask={deleteTask} 
+              togleTaskDone={togleTaskDone}/>
           ))
         }
         {/* <Card/> */}
