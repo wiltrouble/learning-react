@@ -74,35 +74,6 @@ const TaskForm = () => {
 
   return (
     <div className="flex justify-center items-center h-3/4">
-      {/* <form className="bg-gray-900 p-10"
-        onSubmit={handleSubmit}>
-        <h2 className="text-3x-1 mb-7">{
-          task.id ? 'Editing a task' : 'Creating a task'
-        }</h2>
-        <div className="mb-5">
-          <input type="text" 
-            name="title"
-            placeholder="Write a title"
-            onChange={handleChange}
-            value={task.title}
-            className="py-3 px-4 focus:outline-none focus:text-gray-100 bg-gray-700 w-full"/>
-        </div>
-
-        <div className="mb-5">
-          <textarea 
-            name="description"
-            value={task.description} 
-            rows="2"
-            onChange={handleChange} 
-            className="py-3 px-4 focus:outline-none focus:text-gray-100 bg-gray-700 w-full"/>
-        </div>
-        <button 
-          type="submit"
-          className="bg-green-600 w-full hover:bg-green-500 py-2 px-4 mt-5">
-            {task.id ? 'Save' : 'Create Task'}
-        </button>
-      </form> */}
-
       <form className="w-full max-w-lg" onSubmit={handleSubmit2}>
         <p className="text-green-400 text-x italic">Student Information</p>
         <div className="flex flex-wrap -mx-3 mb-6">

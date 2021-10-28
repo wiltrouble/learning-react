@@ -1,102 +1,30 @@
-import { createContext, useReducer } from "react";
+import { createContext, useReducer, useState, useEffect } from "react";
 import appReducer from "./AppReducer";
 import { v4 } from "uuid";
+import { collection, query, onSnapshot  } from "firebase/firestore";
 
-const initialState = {
-  tasks: [
-    {
-      id: '1',
-      title: 'title one',
-      description: 'description for title one',
-      done: false,
-      firstName: 'Martina',
-      lastName: 'Lopez',
-      allergies: 'Sarampion, Mani',
-      birthDate: '18/09/2021',
-      area: 'Estimulacion Temprana',
-      photoUrl: 'https://images.unsplash.com/photo-1530268729831-4b0b9e170218?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80',
-      gender: 'Femenino',
-      fatherName: 'Wilson Lopez',
-      fatherCI: '2776827',
-      fatherPhone: '4706131',
-      fatherMobile: '75988122',
-      motherName: 'Eliana Monica Nogales',
-      motherCI: '2776827',
-      motherPhone: '4706131',
-      motherMobile: '75988122',
-    },
-    {
-      id: '2',
-      title: 'title two',
-      description: 'description for title two',
-      done: false,
-      firstName: 'Leonel Fernando',
-      lastName: 'Lopez Nogales',
-      allergies: 'Sarampion, Mani',
-      birthDate: '19/12/2021',
-      area: 'Estimulacion Temprana',
-      photoUrl: 'https://images.unsplash.com/photo-1530268729831-4b0b9e170218?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80',
-      gender: 'Femenino',
-      fatherName: 'Wilson Lopez',
-      fatherCI: '2776827',
-      fatherPhone: '4706131',
-      fatherMobile: '75988122',
-      motherName: 'Eliana Monica Nogales',
-      motherCI: '2776827',
-      motherPhone: '4706131',
-      motherMobile: '75988122',
-    },
-    {
-      id: '3',
-      title: 'title three',
-      description: 'description for title two',
-      done: false,
-      firstName: 'Leonel Fernando',
-      lastName: 'Lopez Nogales',
-      allergies: 'Sarampion, Mani',
-      birthDate: '19/12/2021',
-      area: 'Estimulacion Temprana',
-      photoUrl: 'https://images.unsplash.com/photo-1530268729831-4b0b9e170218?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80',
-      gender: 'Femenino',
-      fatherName: 'Wilson Lopez',
-      fatherCI: '2776827',
-      fatherPhone: '4706131',
-      fatherMobile: '75988122',
-      motherName: 'Eliana Monica Nogales',
-      motherCI: '2776827',
-      motherPhone: '4706131',
-      motherMobile: '75988122',
-    },
-    {
-      id: '4',
-      title: 'title four',
-      description: 'description for title two',
-      done: false,
-      firstName: 'Fernando',
-      lastName: 'Lopez Nogales',
-      allergies: 'Sarampion, Mani',
-      birthDate: '19/12/2021',
-      area: 'Estimulacion Temprana',
-      photoUrl: 'https://images.unsplash.com/photo-1530268729831-4b0b9e170218?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80',
-      gender: 'Femenino',
-      fatherName: 'Wilson Lopez',
-      fatherCI: '2776827',
-      fatherPhone: '4706131',
-      fatherMobile: '75988122',
-      motherName: 'Eliana Monica Nogales',
-      motherCI: '2776827',
-      motherPhone: '4706131',
-      motherMobile: '75988122',
-    },
-  ],
-}
+import { db } from "../db/firebaseConfig";
 
-
-export const GlobalContext = createContext(initialState)
+export const GlobalContext = createContext([])
 
 export const ContextProvider = ({children}) => {
 
-  const [state, dispatch] = useReducer(appReducer, initialState)
+  const [students, setStudents] = useState([])
+
+  useEffect(() => {
+    const q = query(collection(db, 'students'));
+    const unsub = onSnapshot(q, (querySnapshot) => {
+      let studentsArray = [];
+      querySnapshot.forEach((doc) =>{
+        studentsArray.push({...doc.data(), id:doc.id})
+      });
+      setStudents(studentsArray)
+    })
+    return () => unsub()
+  }, [])
+  console.log(students);
+
+  const [state, dispatch] = useReducer(appReducer, [])
 
   const addTask = (task) => {
     dispatch({type: 'ADD_TASK', payload: {...task, task}})
