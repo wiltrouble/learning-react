@@ -99,7 +99,7 @@ export const ContextProvider = ({children}) => {
   const [state, dispatch] = useReducer(appReducer, initialState)
 
   const addTask = (task) => {
-    dispatch({type: 'ADD_TASK', payload: {...task, id: v4(), done: false}})
+    dispatch({type: 'ADD_TASK', payload: {...task, task}})
   }
 
   const deleteTask = (id) => dispatch({type: 'DELETE_TASK', payload: id})
